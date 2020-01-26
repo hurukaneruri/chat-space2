@@ -29,66 +29,37 @@ Things you may want to cover:
 |------|----|-------|
 |email|string|null: false|
 |password|string|null: false|
-|username|string|null: false|
+|name|string|null: false, index: true|
 ### Association
-- has_many :posts
 - has_many :comments
-
-## postsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|title|text|null: false|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-- has_many :comments
-- has_many :posts_tags
-- has_many :tags,  through:  :posts_tags
-
-## tagsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-### Association
-- has_many :posts_tags
-- has_many :posts,  through:  :posts_tags
-
-## posts_tagsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|post_id|integer|null: false, foreign_key: true|
-|tag_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :post
-- belongs_to :tag
+_ has_many :groups
+_ has_many :groups_users
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|text|text|         |
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
+|image|image|       |
 ### Association
-- belongs_to :post
+- belongs_to :group
 - belongs_to :user
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-
+|name|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :groups_users
-- belongs_to :user
+- has_many :groups_users
+- has_many :user
 
 ## groups_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
