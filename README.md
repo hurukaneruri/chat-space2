@@ -1,29 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-# Qiita DB設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -32,16 +6,16 @@ Things you may want to cover:
 |name|string|null: false, index: true|
 ### Association
 - has_many :comments
-_ has_many :groups
-_ has_many :groups_users
+_ has_many :groups,through: :groups_users
+_ has_many :groups_users,through: :groups
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|         |
+|text|text||
+|image|string||
 |user|references|null: false, foreign_key: true|
 |group|references|null: false, foreign_key: true|
-|image|image|       |
 ### Association
 - belongs_to :group
 - belongs_to :user
@@ -51,8 +25,9 @@ _ has_many :groups_users
 |------|----|-------|
 |name|integer|null: false, foreign_key: true|
 ### Association
-- has_many :groups_users
+- has_many :groups_users,through: :groups
 - has_many :user
+- has_many :comments
 
 ## groups_usersテーブル
 
