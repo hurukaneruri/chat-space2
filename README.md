@@ -7,7 +7,7 @@
 ### Association
 - has_many :comments
 _ has_many :groups,through: :groups_users
-_ has_many :groups_users,through: :groups
+_ has_many :groups_users
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -23,10 +23,10 @@ _ has_many :groups_users,through: :groups
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false, foreign_key: true|
+|name|integer|null: false|
 ### Association
-- has_many :groups_users,through: :groups
-- has_many :user
+- has_many :users,through: :group_users
+- has_many :groups_users
 - has_many :comments
 
 ## groups_usersテーブル
