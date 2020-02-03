@@ -1,20 +1,22 @@
 .chat
   .header
     .left-header
-      %h2.current-group test
-      %ul.member-list
-        %li.member-list__member masa
-    =link_to "#", class: "edit-btn" do
-      Edit
+      %h2.left-header__title test
+      %ul.left-header__members
+        %li.member Member,masa
+    .right-header
+      =link_to "#", class: "edit-btn" do
+        .right-header__button Edit
 
   .messages
     = render partial: 'message', collection: @messages
 
   .form
     -# = form_for [@group, @message] do |f|
-    -#   .form__mask
-    -#     = f.text_field :content, class:'form__message', placeholder: 'type a message'
-    -#     = f.label :image, class: 'form__mask__image' do
-    -#       = icon('fas', 'image', class: 'icon')
-    -#       = f.file_field :image, class: 'hidden'
-    -#   = f.submit 'Send', class: 'form__submit'
+      = f.text_field :content, class:'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.text_field :content, class:'form__message', placeholder: 'type a message'
+        = f.label :image, class: 'form__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
