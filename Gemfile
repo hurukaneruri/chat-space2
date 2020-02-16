@@ -55,11 +55,14 @@ gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'erb2haml'
+  gem 'carrierwave'
+  gem 'mini_magick'
 
 group :test, :development do 
-  gem 'capybara'
+  gem 'byebug', platform: :mri
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
-
-gem 'pry-rails'
-gem 'carrierwave'
-gem 'mini_magick'
