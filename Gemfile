@@ -66,3 +66,7 @@ group :test, :development do
   gem 'factory_bot_rails'
   gem 'faker'
 end
+
+group :test, :development do 
+  gem 'capybara'
+end
