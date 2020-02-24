@@ -1,6 +1,5 @@
 
 $(function(){
-  console.log(last_message_id);
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $('.message:last').data("message-id");
@@ -83,6 +82,7 @@ $(function(){
         `</div>` +
       `</div>`
     };
+    return html;
   };
 
   $('#new_message').on('submit', function(e){
