@@ -26,4 +26,10 @@ class MessagesController < ApplicationController
   def set_group
     @group = Group.find(params[:group_id])
   end
+
+  respond_to do |format|
+    format.html { redirect_to group_messages_path, notice: "メッセージを送信しました" }
+    format.json
+  end
+
 end

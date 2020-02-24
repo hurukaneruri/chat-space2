@@ -55,8 +55,8 @@ gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'erb2haml'
-  gem 'carrierwave'
-  gem 'mini_magick'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :test, :development do 
   gem 'byebug', platform: :mri
@@ -70,3 +70,6 @@ end
 group :test, :development do 
   gem 'capybara'
 end
+
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# gem 'turbolinks', '~> 5' # コメントアウトする
