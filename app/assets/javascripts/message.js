@@ -28,6 +28,7 @@ $(function(){
     })
     .fail(function() {
       console.log('error');
+      alert("メッセージ送信に失敗しました");
     });
   };
   var buildHTML = function(message) {
@@ -82,8 +83,8 @@ $(function(){
         `</div>` +
       `</div>`
     };
-    return html;
   };
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
