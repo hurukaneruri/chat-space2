@@ -57,7 +57,7 @@ $(function(){
       $('.messages').append(html);
       $('form')[0].reset();
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-      /* $('.box').animate({'height' : '200px'}); */
+      $('.box').animate({'height' : '200px'});
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
