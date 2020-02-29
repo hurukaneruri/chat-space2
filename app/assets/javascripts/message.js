@@ -104,8 +104,8 @@ $(function(){
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       $('.box').animate({'height' : '200px'});
     })
-    .fail(function() {
-      alert("メッセージ送信に失敗しました");
+    // .fail(function() {
+    //   alert("メッセージ送信に失敗しました");
     })
   })
   //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
@@ -114,4 +114,4 @@ $(function(){
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 7000);
   }
-});
+// });
