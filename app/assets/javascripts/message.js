@@ -49,6 +49,7 @@ $(function(){
           `<img src="`message.image`" class="lower-message__image" >`
         `</div>`
       `</div>`
+      return html;
     } else if (message.content) {
       //同様に、data-idが反映されるようにしている
       var html = `<div class="message" data-message-id=`message.id`>`
@@ -66,48 +67,48 @@ $(function(){
           `</p>`
         `</div>`
       `</div>`
+    return html;
     } else if (message.image) {
       //同様に、data-idが反映されるようにしている
-      var html = `<div class="message" data-message-id=`message.id`>`
-        `<div class="upper-message">`
-          `<div class="upper-message__user-name">`
-            message.user_name
+        var html = `<div class="message" data-message-id=`message.id`>`
+          `<div class="upper-message">`
+            `<div class="upper-message__user-name">`
+              message.user_name
+            `</div>`
+            `<div class="upper-message__date">`
+              message.created_at
+            `</div>`
           `</div>`
-          `<div class="upper-message__date">`
-            message.created_at
+          `<div class="lower-message">`
+            `<img src="`message.image`" class="lower-message__image" >`
           `</div>`
         `</div>`
-        `<div class="lower-message">`
-          `<img src="`message.image`" class="lower-message__image" >`
-        `</div>`
-      `</div>`
+      return html;
     };
-    return html;
-  };
-
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action')
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(data){
-      var html = buildHTML(data);
-      $('.messages').append(html);
-      $('form')[0].reset();
-      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-      $('.box').animate({'height' : '200px'});
-    })
-    // .fail(function() {
-    //   alert("メッセージ送信に失敗しました");
-    })
+  }
+$('#new_message').on('submit', function(e){
+  e.preventDefault();
+  var formData = new FormData(this);
+  var url = $(this).attr('action')
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: formData,
+    dataType: 'json',
+    processData: false,
+    contentType: false
   })
+  .done(function(data){
+    var html = buildHTML(data);
+    $('.messages').append(html);
+    $('form')[0].reset();
+    $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+    $('.box').animate({'height' : '200px'});
+  })
+  // .fail(function() {
+  //   alert("メッセージ送信に失敗しました");
+  })
+})
   //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
   setInterval(reloadMessages, 7000);
   //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
