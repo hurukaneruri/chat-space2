@@ -71,5 +71,9 @@ group :test, :development do
   gem 'capybara'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5' # コメントアウトする
